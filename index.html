@@ -4,220 +4,748 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ye Bot - Privacy Policy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --bg-tertiary: #1f1f1f;
+            --surface-primary: rgba(255, 215, 0, 0.03);
+            --surface-secondary: rgba(255, 215, 0, 0.05);
+            --surface-tertiary: rgba(255, 215, 0, 0.08);
+            --text-primary: #ffd700;
+            --text-secondary: #f4e99b;
+            --text-tertiary: #d4af37;
+            --text-muted: #8b7b00;
+            --accent-primary: #ffd700;
+            --accent-secondary: #ffed4e;
+            --accent-gold: #ffd700;
+            --accent-yellow: #ffff66;
+            --accent-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffff66 100%);
+            --accent-glow: rgba(255, 215, 0, 0.5);
+            --gold-glow: rgba(255, 215, 0, 0.6);
+            --border-primary: rgba(255, 215, 0, 0.2);
+            --border-secondary: rgba(255, 215, 0, 0.1);
+            --shadow-primary: 0 4px 24px rgba(0, 0, 0, 0.4);
+            --shadow-secondary: 0 8px 40px rgba(0, 0, 0, 0.6);
+            --shadow-glow: 0 0 50px rgba(255, 215, 0, 0.3);
+            --blur-bg: blur(20px);
+            --blur-light: blur(10px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes aurora {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 0.6; }
+            25% { transform: translate(-45%, -55%) rotate(90deg) scale(1.3); opacity: 0.3; }
+            50% { transform: translate(-55%, -45%) rotate(180deg) scale(0.9); opacity: 0.7; }
+            75% { transform: translate(-50%, -50%) rotate(270deg) scale(1.1); opacity: 0.4; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a, #000000);
-            color: #e0e0e0;
-            line-height: 1.8;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background-color: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        ::-moz-selection {
+            background-color: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-primary);
+        }
+
+        .background-container {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: radial-gradient(ellipse at center, var(--bg-secondary) 0%, var(--bg-primary) 70%);
+        }
+
+        .aurora-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            animation: aurora 30s ease-in-out infinite;
+        }
+
+        .aurora-blob:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.4), transparent 70%);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .aurora-blob:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 237, 78, 0.3), transparent 70%);
+            top: 50%;
+            right: 5%;
+            animation-delay: -10s;
+        }
+
+        .aurora-blob:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 102, 0.2), transparent 70%);
+            top: 80%;
+            left: 40%;
+            animation-delay: -20s;
+        }
+
+        .page-container {
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-            padding: 4rem 2rem;
-            box-sizing: border-box;
-            -webkit-user-select: auto;
-            -moz-user-select: auto;
-            -ms-user-select: auto;
-            user-select: auto;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 1;
         }
-        ::selection { background-color: #FFD700; color: #111111; }
-        ::-moz-selection { background-color: #FFD700; color: #111111; }
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 10px; border: 3px solid #1a1a1a; }
-        ::-webkit-scrollbar-thumb:hover { background: #4a4a4a; }
+
         .container {
-            background-color: #111111;
-            border-radius: 1.5rem;
-            box-shadow: 0 25px 75px rgba(0, 0, 0, 0.9);
-            padding: 5rem;
+            background: var(--surface-primary);
+            backdrop-filter: var(--blur-bg);
+            border: 1px solid var(--border-primary);
+            border-radius: 24px;
+            padding: 4rem;
             width: 100%;
             max-width: 1000px;
-            border: 2px solid #333333;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease-in-out;
+            animation: fadeInUp 0.8s ease-out;
+            box-shadow: var(--shadow-secondary), var(--shadow-glow);
         }
-        .container:hover {
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95);
-            transform: translateY(-5px);
-        }
+
         .container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 15% 25%, rgba(255, 215, 0, 0.03) 0%, transparent 40%),
-                        radial-gradient(circle at 85% 75%, rgba(255, 165, 0, 0.03) 0%, transparent 40%);
-            z-index: 0;
-            pointer-events: none;
+            height: 1px;
+            background: var(--accent-gradient);
+            opacity: 0.8;
         }
-        .content-wrapper { position: relative; z-index: 1; }
-        h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 900;
-            color: #ffffff;
-            text-align: center;
-            margin-bottom: 2rem;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
-            letter-spacing: 0.05em;
-            line-height: 1;
-            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGlow 2s infinite alternate;
-        }
-        @keyframes textGlow {
-            from { text-shadow: 0 0 15px rgba(255, 215, 0, 0.3), 0 0 25px rgba(255, 165, 0, 0.3); }
-            to { text-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.6); }
-        }
-        h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-top: 4.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 4px solid #FFD700;
-            padding-bottom: 1rem;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-            letter-spacing: 0.03em;
-            position: relative;
-        }
-        h2::after {
+
+        .container::after {
             content: '';
             position: absolute;
-            bottom: -7px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, #FFA500, transparent);
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
-        h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #f8f8f8;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            border-left: 5px solid #FFD700;
-            padding-left: 1rem;
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
         }
-        p { margin-bottom: 1.5rem; color: #c0c0c0; }
-        ul { list-style: none; padding-left: 0; margin-bottom: 2rem; }
-        ul li { margin-bottom: 0.8rem; position: relative; padding-left: 2rem; color: #d0d0d0; }
-        ul li::before {
-            content: '✨';
-            color: #FFD700;
-            position: absolute;
-            left: 0;
-            font-size: 1.3em;
-            line-height: 1;
-            top: 0.1em;
-        }
-        strong { color: #FFD700; font-weight: 800; }
-        em { font-style: italic; color: #a0a0a0; }
-        .section-separator {
-            border: none;
-            height: 2px;
-            background: linear-gradient(to right, #FFD700, #FFA500, #FFD700);
-            margin: 4rem 0;
-            border-radius: 1px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        .last-updated { text-align: center; font-size: 1rem; color: #909090; margin-top: 0.5rem; margin-bottom: 2.5rem; font-weight: 300; }
-        .footer { text-align: center; font-size: 0.9rem; color: #606060; margin-top: 5rem; padding-top: 2rem; border-top: 1px solid #2a2a2a; }
-        .nav-link {
-            display: block;
+
+        .hero-section {
             text-align: center;
-            margin-top: 1.5rem;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s 0.2s ease-out both;
+        }
+
+        .main-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 700;
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .subtitle {
             font-size: 1.2rem;
+            color: var(--text-tertiary);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--surface-secondary);
+            border-radius: 16px;
+            border-left: 4px solid var(--accent-gold);
+            animation: slideInRight 0.8s 0.4s ease-out both;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out both;
+            animation-delay: calc(var(--section-index) * 0.1s + 0.6s);
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
             font-weight: 600;
-            color: #FFD700;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border: 2px solid #FFD700;
-            border-radius: 0.75rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-primary);
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: var(--accent-gradient);
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2.5rem 0 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        .text-content {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: var(--surface-secondary);
+            border: 1px solid var(--border-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--surface-secondary);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent-gold);
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
         }
+
+        .feature-item:hover {
+            transform: translateX(8px);
+            background: var(--surface-tertiary);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-top: 0.1rem;
+            filter: drop-shadow(0 0 8px var(--gold-glow));
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: var(--text-tertiary);
+            line-height: 1.6;
+        }
+
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-primary), transparent);
+            margin: 4rem 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: var(--surface-secondary);
+            border-radius: 20px;
+            border: 1px solid var(--border-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent-gradient);
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .cta-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--surface-primary);
+            backdrop-filter: var(--blur-light);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
         .nav-link:hover {
-            background-color: #FFD700;
-            color: #111111;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-secondary), var(--shadow-glow);
         }
-        @media (max-width: 1024px) { .container { padding: 4rem; } h1 { font-size: 4.5rem; } h2 { font-size: 2.5rem; } }
-        @media (max-width: 768px) { .container { padding: 3rem 2rem; border-radius: 1rem; } h1 { font-size: 3.5rem; } h2 { font-size: 2.2rem; } body { padding: 2rem 1rem; } }
-        @media (max-width: 480px) { .container { padding: 2rem 1rem; border-radius: 0.75rem; } h1 { font-size: 2.5rem; } h2 { font-size: 1.8rem; } body { padding: 1rem; } }
+
+        .nav-link:hover::before {
+            opacity: 0.1;
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-secondary);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .intro-text {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+
+            .nav-links {
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-container {
+                padding: 1rem 0.5rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+                border-radius: 12px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .subsection-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Enhanced Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus states for better accessibility */
+        .nav-link:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content-wrapper">
-            <h1>Ye Bot - Privacy Policy</h1>
-            <!-- DATE UPDATED -->
-            <p class="last-updated">Last Updated: August 3, 2025</p>
+    <div class="background-container"></div>
+    <div class="aurora-container">
+        <div class="aurora-blob"></div>
+        <div class="aurora-blob"></div>
+        <div class="aurora-blob"></div>
+    </div>
 
-            <p>At <strong>Ye Bot</strong>, we understand that your privacy is paramount. This Privacy Policy outlines how we collect, use, and protect your information when you use our Discord bot. By inviting Ye Bot to your server or interacting with its features, you agree to the terms of this policy.</p>
+    <div class="page-container">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="hero-section">
+                    <h1 class="main-title">Privacy Policy</h1>
+                    <p class="subtitle">Ye Bot - Protecting Your Digital Privacy</p>
+                    <p class="last-updated">Last Updated: August 3, 2025</p>
+                </div>
 
-            <div class="section-separator"></div>
+                <div class="intro-text">
+                    At <strong>Ye Bot</strong>, we understand that your privacy is paramount. This Privacy Policy outlines how we collect, use, and protect your information when you use our Discord bot. By inviting Ye Bot to your server or interacting with its features, you agree to the terms of this policy.
+                </div>
 
-            <h2>1. Information We Collect</h2>
-            <p>Ye Bot is designed with privacy in mind, collecting only the essential data required for its operation and to provide you with a seamless experience. We collect the following types of information:</p>
-            <ul>
-                <li><strong>Discord Server IDs:</strong> To identify the servers Ye Bot is a part of, enabling server-specific configurations, moderation settings, and command prefixes.</li>
-                <li><strong>Discord User IDs:</strong> To manage user-specific features such as command cooldowns, personalized settings (if implemented in the future), and to track bot usage for statistical purposes.</li>
-                <li><strong>Command Usage Data:</strong> Anonymous data on which commands are used, how frequently, and general interaction patterns. This helps us understand bot performance and identify areas for improvement. This data does NOT include message content or personal conversations.</li>
-            </ul>
-            <p><strong>We do NOT collect:</strong></p>
-            <ul>
-                <li>Your personal messages, private conversations, or any content from your Discord interactions.</li>
-                <li>Any personally identifiable information beyond your Discord User ID and Server ID.</li>
-                <li>Any sensitive personal data such as your real name, email address, IP address, or location.</li>
-            </ul>
+                <div class="section" style="--section-index: 1">
+                    <h2 class="section-title">1. Information We Collect</h2>
+                    <div class="text-content">
+                        Ye Bot is designed with privacy in mind, collecting only the essential data required for its operation and to provide you with a seamless experience. We collect the following types of information:
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">🆔</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Discord Server IDs</div>
+                                <div class="feature-description">To identify the servers Ye Bot is a part of, enabling server-specific configurations, moderation settings, and command prefixes.</div>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">👤</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Discord User IDs</div>
+                                <div class="feature-description">To manage user-specific features such as command cooldowns, personalized settings (if implemented in the future), and to track bot usage for statistical purposes.</div>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Command Usage Data</div>
+                                <div class="feature-description">Anonymous data on which commands are used, how frequently, and general interaction patterns. This helps us understand bot performance and identify areas for improvement.</div>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">💬</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Message Content (Limited Commands)</div>
+                                <div class="feature-description">For certain commands that require message processing (such as AI chat features, content moderation, and text analysis), we temporarily collect and process message content. This data is processed in real-time and is not permanently stored unless explicitly stated for specific features.</div>
+                            </div>
+                        </li>
+                    </ul>
 
-            <h2>2. How We Use Your Information</h2>
-            <p>The limited information we collect is used exclusively for the following purposes, ensuring Ye Bot functions effectively and continues to evolve:</p>
-            <ul>
-                <li><strong>To Operate and Maintain Ye Bot:</strong> Server IDs are used to apply server-specific settings and moderation rules. User IDs are used for command processing and cooldowns.</li>
-                <li><strong>To Improve Ye Bot's Features:</strong> Anonymous command usage data helps us understand popular features, identify bugs, and plan future updates to enhance your experience.</li>
-                <li><strong>To Ensure Compliance:</strong> Data may be used to enforce our Terms of Service and Discord's Community Guidelines, preventing misuse or abuse of the bot.</li>
-            </ul>
+                    <div class="highlight-box">
+                        <h3 class="subsection-title">We do NOT collect:</h3>
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <div class="feature-icon">🚫</div>
+                                <div class="feature-content">
+                                    <div class="feature-description">Your personal messages, private conversations, or any content from Discord interactions outside of specific command usage.</div>
+                                </div>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon">🚫</div>
+                                <div class="feature-content">
+                                    <div class="feature-description">Any personally identifiable information beyond your Discord User ID and Server ID.</div>
+                                </div>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon">🚫</div>
+                                <div class="feature-content">
+                                    <div class="feature-description">Any sensitive personal data such as your real name, email address, IP address, or location.</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-            <h2>3. Data Sharing and Disclosure</h2>
-            <p>Your trust is invaluable. Ye Bot does not share, sell, rent, or trade your collected information with any third parties under any circumstances. All data remains within the bot's operational infrastructure and is accessible only to authorized members of the <strong>ac447724</strong> team for maintenance and improvement purposes.</p>
+                <div class="section-divider"></div>
 
-            <h2>4. Data Retention</h2>
-            <p>We retain collected data only for as long as necessary to fulfill the purposes outlined in this Privacy Policy. Server IDs and User IDs are retained while Ye Bot is active in a server. Anonymous command usage data may be retained for longer periods for historical analysis.</p>
+                <div class="section" style="--section-index: 2">
+                    <h2 class="section-title">2. How We Use Your Information</h2>
+                    <div class="text-content">
+                        The limited information we collect is used exclusively for the following purposes, ensuring Ye Bot functions effectively and continues to evolve:
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">⚙️</div>
+                            <div class="feature-content">
+                                <div class="feature-title">To Operate and Maintain Ye Bot</div>
+                                <div class="feature-description">Server IDs are used to apply server-specific settings and moderation rules. User IDs are used for command processing and cooldowns.</div>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">🚀</div>
+                            <div class="feature-content">
+                                <div class="feature-title">To Improve Ye Bot's Features</div>
+                                <div class="feature-description">Anonymous command usage data helps us understand popular features, identify bugs, and plan future updates to enhance your experience.</div>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-content">
+                                <div class="feature-title">To Ensure Compliance</div>
+                                <div class="feature-description">Data may be used to enforce our Terms of Service and Discord's Community Guidelines, preventing misuse or abuse of the bot.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-            <h2>5. Your Rights</h2>
-            <p>You have the right to understand and control your data. To exercise any of your data rights, such as requesting access or deletion, please contact us through the methods provided in the "Contact Us" section below.</p>
+                <div class="section-divider"></div>
 
-            <h2>6. Security of Your Information</h2>
-            <p>We implement robust security measures to protect the integrity and confidentiality of your data. This includes secure server environments and access controls. While we strive to protect your information, no method of transmission over the Internet is 100% secure, and we cannot guarantee its absolute security.</p>
+                <div class="section" style="--section-index: 3">
+                    <h2 class="section-title">3. Data Sharing and Disclosure</h2>
+                    <div class="text-content">
+                        Your trust is invaluable. Ye Bot does not share, sell, rent, or trade your collected information with any third parties under any circumstances. All data remains within the bot's operational infrastructure and is accessible only to authorized members of the <strong>ac447724</strong> team for maintenance and improvement purposes.
+                    </div>
+                </div>
 
-            <h2>7. Changes to This Privacy Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new Privacy Policy on this page and, if feasible, through an announcement in the official Ye Bot support server.</p>
+                <div class="section" style="--section-index: 4">
+                    <h2 class="section-title">4. Data Retention</h2>
+                    <div class="text-content">
+                        We retain collected data only for as long as necessary to fulfill the purposes outlined in this Privacy Policy. Server IDs and User IDs are retained while Ye Bot is active in a server. Anonymous command usage data may be retained for longer periods for historical analysis.
+                    </div>
+                </div>
 
-            <!-- CONTACT SECTION UPDATED -->
-            <h2>8. Contact Us: Reach Out to the Visionaries</h2>
-            <p>If you have any questions about this Privacy Policy, or if you wish to exercise your data rights, please reach out to us through the official Ye Bot support server or contact the team's designated representative, <strong>virtue.fu</strong> (Discord User ID: 1000483610190675988).</p>
-            
-            <a href="https://discord.gg/CbRfUeHnt4" target="_blank" class="nav-link">Join the Official Support Server</a>
-            <a href="https://ac447724.github.io/Ye-Bot-TOS/" target="_blank" class="nav-link">View Terms of Service</a>
-            <a href="https://ac447724.github.io/Ye-Bot-Copyright-Notice/" target="_blank" class="nav-link">View Copyright Notice</a>
-            
-        </div>
-        <!-- FOOTER UPDATED -->
-        <div class="footer">
-            © 2025 ac447724 / Ye Bot. All rights reserved.
+                <div class="section" style="--section-index: 5">
+                    <h2 class="section-title">5. Your Rights</h2>
+                    <div class="text-content">
+                        You have the right to understand and control your data. To exercise any of your data rights, such as requesting access or deletion, please contact us through the methods provided in the "Contact Us" section below.
+                    </div>
+                </div>
+
+                <div class="section" style="--section-index: 6">
+                    <h2 class="section-title">6. Security of Your Information</h2>
+                    <div class="text-content">
+                        We implement robust security measures to protect the integrity and confidentiality of your data. This includes secure server environments and access controls. While we strive to protect your information, no method of transmission over the Internet is 100% secure, and we cannot guarantee its absolute security.
+                    </div>
+                </div>
+
+                <div class="section" style="--section-index: 7">
+                    <h2 class="section-title">7. Changes to This Privacy Policy</h2>
+                    <div class="text-content">
+                        We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new Privacy Policy on this page and, if feasible, through an announcement in the official Ye Bot support server.
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="cta-section">
+                    <h2 class="cta-title">8. Contact Us: Reach Out to the Visionaries</h2>
+                    <p class="cta-description">
+                        If you have any questions about this Privacy Policy, or if you wish to exercise your data rights, please reach out to us through the official Ye Bot support server or contact the team's designated representative, <strong>virtue.fu</strong> (Discord User ID: 1000483610190675988).
+                    </p>
+                    
+                    <div class="nav-links">
+                        <a href="https://discord.gg/CbRfUeHnt4" target="_blank" class="nav-link">
+                            <span class="nav-icon">💬</span>
+                            Join the Official Support Server
+                        </a>
+                        <a href="https://ac447724.github.io/Ye-Bot-TOS/" target="_blank" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            View Terms of Service
+                        </a>
+                        <a href="https://ac447724.github.io/Ye-Bot-Copyright-Notice/" target="_blank" class="nav-link">
+                            <span class="nav-icon">⚖️</span>
+                            View Copyright Notice
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    © 2025 ac447724 / Ye Bot. All rights reserved.
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.animationPlayState = 'paused';
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to aurora blobs
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            const blobs = document.querySelectorAll('.aurora-blob');
+            blobs.forEach((blob, index) => {
+                blob.style.transform = `translateY(${rate * (index + 1) * 0.1}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
